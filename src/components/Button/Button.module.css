@@ -1,3 +1,45 @@
+.primary {
+  background-color: #89c0ff;
+}
+
+.primary:hover {
+  background-color: #7eb1ec;
+}
+
+.primary:focus,
+.primary:active {
+  background-color: #70a3dd;
+}
+
+.primary:disabled {
+  background-color: #b7cadf;
+  cursor: default;
+}
+
 .danger {
-  background-color: #ff3c3c;
+  background-color: #ff4e4e;
+}
+
+.danger:hover {
+  background-color: #ec4848;
+  color: white;
+}
+
+.danger:focus,
+.danger:active {
+  background-color: #d64040;
+  color: white;
+}
+
+.submit {
+  background-color: #a3f09c;
+}
+
+.submit:hover {
+  background-color: #86d87f;
+}
+
+.submit:focus,
+.submit:active {
+  background-color: #73c26c;
 }

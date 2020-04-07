@@ -9,6 +9,7 @@ class Table extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      page: 1,
       rowsPerPage: 4,
       students: this.props.studentsData,
     };
@@ -16,7 +17,10 @@ class Table extends Component {
 
   handleSelect = (event) => {
     event.persist();
-    this.setState(() => ({ rowsPerPage: +event.target.value }));
+    this.setState(() => ({
+      page: 1,
+      rowsPerPage: +event.target.value,
+    }));
   };
 
   handleDeleteClick = (index) => {
@@ -30,8 +34,31 @@ class Table extends Component {
     this.setState((state) => ({ students: [...state.students, row] }));
   };
 
+  handleNextClick = () => {
+    this.setState((state) => {
+      const numOfRows = state.students.length;
+      if (Math.ceil(numOfRows / state.rowsPerPage) > state.page) {
+        return { page: state.page + 1 };
+      }
+      return {};
+    });
+  }
+
+  handlePrevClick = () => {
+    this.setState((state) => {
+      if (state.page > 1) {
+        return { page: state.page - 1 };
+      }
+      return {};
+    });
+  }
+
   renderTableRows = () => {
-    return this.state.students.map((row, ind) => {
+    const { page, rowsPerPage, students } = this.state;
+    const start = (page - 1) * rowsPerPage;
+    const end = start + rowsPerPage;
+    const rows = students.slice(start, end);
+    return rows.map((row, ind) => {
       const id = ind;
       return (
         <tr key={`${id}${row.secondName}${row.birthYear}`}>
@@ -39,7 +66,7 @@ class Table extends Component {
           <td>{row.secondName}</td>
           <td>{row.birthYear}</td>
           <td>
-            <Button text="Delete" onClick={() => this.handleDeleteClick(ind)} color="danger" />
+            <Button text="Delete" onClick={() => this.handleDeleteClick(ind)} btnRole="danger" />
           </td>
         </tr>
       );
@@ -65,6 +92,10 @@ class Table extends Component {
           value={this.state.rowsPerPage}
           onChange={this.handleSelect}
           selectOptions={[2, 4, 6]}
+          handleNextClick={this.handleNextClick}
+          handlePrevClick={this.handlePrevClick}
+          page={this.state.page}
+          pages={Math.ceil(this.state.students.length / this.state.rowsPerPage)}
         />
       </div>
     );

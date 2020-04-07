@@ -63,7 +63,7 @@ export default class SubmitRow extends React.Component {
             onChange={this.handleChange}
           />
         </label>
-        <Button type="submit" text="Add" />
+        <Button btnRole="submit" text="Add" />
       </form>
     );
   }
