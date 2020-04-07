@@ -1,0 +1,6 @@
+.main {
+}
+
+.main tr:last-child {
+  border-bottom: 2px solid #dedede;
+}

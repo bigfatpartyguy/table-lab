@@ -1,0 +1,17 @@
+.app {
+  width: 80%;
+  max-width: 890px;
+  margin: 0 auto;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 12px #dedede;
+  background-color: white;
+  padding: 0.6rem;
+}
+
+@media screen and (max-width: 890px) {
+  .app {
+    width: 100%;
+    box-shadow: none;
+    border-radius: none;
+  }
+}

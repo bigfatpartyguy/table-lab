@@ -1,0 +1,14 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.main label {
+  width: 25%;
+}
+
+.main input {
+  width: 100%;
+}
+
