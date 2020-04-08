@@ -1,3 +1,5 @@
+# This repo created for testing some ideas while building table in react.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
