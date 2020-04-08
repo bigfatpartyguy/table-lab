@@ -17,6 +17,7 @@ export default function Button(props) {
       className={styles[btnRole]}
       type="button"
       onClick={onClick}
+      value={text}
     >
       {text}
     </button>

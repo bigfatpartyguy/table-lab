@@ -1,18 +1,31 @@
 .primary {
-  background-color: #89c0ff;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  color: #007bff;
 }
 
 .primary:hover {
-  background-color: #7eb1ec;
-}
-
-.primary:focus,
-.primary:active {
-  background-color: #70a3dd;
+  background-color: #e9ecef;
+  color: #035fc2;
 }
 
 .primary:disabled {
-  background-color: #b7cadf;
+  color: #a3a5a8;
+  cursor: default;
+}
+
+.primary:disabled:hover {
+  background-color: white;
+}
+
+.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.active:disabled {
+  background-color: #007bff;
+  color: white;
   cursor: default;
 }
 

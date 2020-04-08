@@ -2,7 +2,9 @@ html {
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
   font-family: inherit;
 }
@@ -11,7 +13,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 
 body {
   padding: 0;
@@ -29,8 +30,9 @@ select {
 
 button {
   border: none;
-  border-radius: 0.2rem;
+  border-radius: 0.3rem;
   padding: 0.6rem 1.4rem;
+  height: 40px;
   background-color: #f0f0f0;
   cursor: pointer;
 }
@@ -39,13 +41,8 @@ button:hover {
   background-color: #dedede;
 }
 
-button:focus,
-button:active {
-  background-color: #c5c5c5;
-}
-
-[type="text"],
-[type="number"],
+[type='text'],
+[type='number'],
 select {
   border: 1px solid #dedede;
   border-radius: 0.2rem;
@@ -53,16 +50,16 @@ select {
   outline: none;
 }
 
-[type="text"]:hover,
-[type="number"]:hover,
+[type='text']:hover,
+[type='number']:hover,
 select:hover {
   border: 1px solid #c5c5c5;
 }
 
-[type="text"]:focus,
-[type="text"]:active,
-[type="number"]:focus,
-[type="number"]:active,
+[type='text']:focus,
+[type='text']:active,
+[type='number']:focus,
+[type='number']:active,
 select:focus,
 select:active {
   border: 1px solid #2781ff;

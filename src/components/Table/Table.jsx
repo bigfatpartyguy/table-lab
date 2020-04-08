@@ -31,6 +31,12 @@ class Table extends Component {
   };
 
   handleSubmitRow = (row) => {
+    const { firstName, secondName, birthYear } = row;
+    if (!firstName || !secondName || !birthYear) {
+      /* global alert */
+      alert('Please, fill in the input fields.');
+      return;
+    }
     this.setState((state) => ({ students: [...state.students, row] }));
   };
 
@@ -42,7 +48,7 @@ class Table extends Component {
       }
       return {};
     });
-  }
+  };
 
   handlePrevClick = () => {
     this.setState((state) => {
@@ -51,26 +57,48 @@ class Table extends Component {
       }
       return {};
     });
-  }
+  };
+
+  handlePageClick = (event) => {
+    const page = +event.target.value;
+    this.setState({ page });
+  };
 
   renderTableRows = () => {
     const { page, rowsPerPage, students } = this.state;
     const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
-    const rows = students.slice(start, end);
-    return rows.map((row, ind) => {
-      const id = ind;
-      return (
-        <tr key={`${id}${row.secondName}${row.birthYear}`}>
-          <td>{row.firstName}</td>
-          <td>{row.secondName}</td>
-          <td>{row.birthYear}</td>
-          <td>
-            <Button text="Delete" onClick={() => this.handleDeleteClick(ind)} btnRole="danger" />
-          </td>
-        </tr>
-      );
-    });
+    const pageToDisplay = students
+      .map((row, ind) => {
+        const id = ind;
+        return (
+          <tr key={`${id}${row.secondName}${row.birthYear}`}>
+            <td>{row.firstName}</td>
+            <td>{row.secondName}</td>
+            <td>{row.birthYear}</td>
+            <td>
+              <Button
+                text="Delete"
+                onClick={() => this.handleDeleteClick(ind)}
+                btnRole="danger"
+              />
+            </td>
+          </tr>
+        );
+      })
+      .slice(start, end);
+    const emptyRows = Array(rowsPerPage - pageToDisplay.length)
+      .fill(null)
+      .map((empty, ind) => {
+        const key = ind;
+        return (
+          <tr key={key} className={styles.emptyRow}>
+            <td colSpan="4">&nbsp;</td>
+          </tr>
+        );
+      });
+
+    return pageToDisplay.concat(emptyRows);
   };
 
   render() {
@@ -82,7 +110,7 @@ class Table extends Component {
               <th>First Name</th>
               <th>Last Name</th>
               <th>Birth Year</th>
-              <th>Delete</th>
+              <th>&nbsp;</th>
             </tr>
           </thead>
           <tbody>{this.renderTableRows()}</tbody>
@@ -94,6 +122,7 @@ class Table extends Component {
           selectOptions={[2, 4, 6]}
           handleNextClick={this.handleNextClick}
           handlePrevClick={this.handlePrevClick}
+          handlePageClick={this.handlePageClick}
           page={this.state.page}
           pages={Math.ceil(this.state.students.length / this.state.rowsPerPage)}
         />
@@ -110,7 +139,7 @@ Table.propTypes = {
       firstName: PropTypes.string,
       secondName: PropTypes.string,
       birthYear: PropTypes.number,
-    }),
+    })
   ),
 };
 

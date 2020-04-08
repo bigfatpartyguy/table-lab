@@ -41,6 +41,7 @@ export default class SubmitRow extends React.Component {
             name="firstName"
             value={firstName}
             onChange={this.handleChange}
+            required
           />
         </label>
         <label htmlFor="surname">
@@ -51,13 +52,14 @@ export default class SubmitRow extends React.Component {
             name="secondName"
             value={secondName}
             onChange={this.handleChange}
+            required
           />
         </label>
         <label htmlFor="year">
           Birth Year
           <input
             id="birthYear"
-            type="text"
+            type="number"
             name="birthYear"
             value={birthYear}
             onChange={this.handleChange}

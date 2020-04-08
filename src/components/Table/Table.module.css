@@ -4,3 +4,7 @@
 .main tr:last-child {
   border-bottom: 2px solid #dedede;
 }
+
+.emptyRow {
+  height: 54px;
+}

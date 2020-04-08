@@ -11,6 +11,7 @@ export default function Pagination(props) {
     value,
     handleNextClick,
     handlePrevClick,
+    handlePageClick,
     page,
     pages,
   } = props;
@@ -18,7 +19,19 @@ export default function Pagination(props) {
     .fill(null)
     .map((empty, index) => {
       const key = index;
-      return <Button key={key} text={String(index + 1)} />;
+      let active;
+      if (key + 1 === page) {
+        active = 'active';
+      }
+      return (
+        <Button
+          disabled={active && true}
+          btnRole={active}
+          onClick={handlePageClick}
+          key={key}
+          text={String(index + 1)}
+        />
+      );
     });
   return (
     <div className={styles.pagination}>
